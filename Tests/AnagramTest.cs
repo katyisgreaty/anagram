@@ -50,5 +50,14 @@ namespace AnagramChecker.Objects
       List<string> output = testAnagram.CheckAnagram("meat mate");
       Assert.Equal(expected, output);
     }
+
+    [Fact]
+    public void CheckAnagram_ForMultipleWordsInPhrase_notmatch()
+    {
+      Anagram testAnagram = new Anagram("team");
+      List<string> expected = new List<string>{"meat", "mate"};
+      List<string> output = testAnagram.CheckAnagram("meat mate dolphin");
+      Assert.Equal(expected, output);
+    }
   }
 }
