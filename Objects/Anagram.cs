@@ -24,27 +24,7 @@ namespace AnagramChecker.Objects
       _word = inputWord;
     }
 
-    // public List<string> GetWordList()
-    // {
-    //   return _checkedwordMatches
-    // }
-
-    // public string GetCheckedWord()
-    // {
-    //   return _checkedWord;
-    // }
-    // public void SetCheckedWord(string inputCheckedWord)
-    // {
-    //   _checkedWord = inputCheckedWord;
-    // }
-    //
-    public List<string> GetAllMatches(string phrase)
-    {
-      CheckAnagram(phrase);
-      return _checkedWordMatches;
-    }
-
-    public bool CheckAnagram(string phrase)
+    public List<string> CheckAnagram(string phrase)
     {
       string[] phraseList = phrase.Split(' ');
       string word = GetWord();
@@ -57,36 +37,28 @@ namespace AnagramChecker.Objects
         char[] checkedWordArray = checkedWord.ToCharArray();
         Array.Sort<char>(checkedWordArray);
 
-        if (word == checkedWord)
+        //If words don't match exactly
+        for (int i = 0; i < wordArray.Length; i++)
         {
-          _checkedWordMatches.Add(checkedWord);
-          return true;
-        }
-        else
-        {
-          for (int i = 0; i < wordArray.Length; i++)
+          //then check the last letter
+          if ( i == wordArray.Length-1 && wordArray[i] == checkedWordArray[i])
           {
-            if ( i == wordArray.Length-1 && wordArray[i] == checkedWordArray[i])
-            {
-              _checkedWordMatches.Add(checkedWord);
-              // foreach (string thisWord in _checkedWordMatches)
-              // {
-              //   Console.WriteLine(thisWord);
-              // }
-              return true;
-            }
-            else if (wordArray[i] == checkedWordArray[i])
-            {
-              continue;
-            }
-            else
-            {
-              return false;
-            }
+            _checkedWordMatches.Add(checkedWord);
+            continue;
           }
-          return false;
+          //then check all the letters
+          else if (wordArray[i] == checkedWordArray[i])
+          {
+            continue;
+          }
+          //bail
+          else
+          {
+            break;
+          }
         }
       }
+      return _checkedWordMatches;
     }
   }
 }

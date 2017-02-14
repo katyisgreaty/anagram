@@ -7,39 +7,47 @@ namespace AnagramChecker.Objects
   public class AnagramTest
   {
     [Fact]
-    public void CheckAnagram_ForExactMatch_true()
+    public void CheckAnagram_ForExactMatch_match()
     {
       Anagram testAnagram = new Anagram("team");
-      Assert.Equal(true, testAnagram.CheckAnagram("team"));
+      List<string> expected = new List<string>{"team"};
+      List<string> output = testAnagram.CheckAnagram("team");
+      Assert.Equal(expected, output);
     }
 
     [Fact]
-    public void CheckAnagram_ForNotMatchOrAnagram_false()
+    public void CheckAnagram_ForNotMatchOrAnagram_notmatch()
     {
       Anagram testAnagram = new Anagram("team");
-      Assert.Equal(false, testAnagram.CheckAnagram("dolphin"));
+      List<string> expected = new List<string>{};
+      List<string> output = testAnagram.CheckAnagram("dolphin");
+      Assert.Equal(expected, output);
     }
 
     [Fact]
-    public void CheckAnagram_ForAnagram_true()
+    public void CheckAnagram_ForAnagram_match()
     {
       Anagram testAnagram = new Anagram("team");
-      Assert.Equal(true, testAnagram.CheckAnagram("mate"));
+      List<string> expected = new List<string>{"mate"};
+      List<string> output = testAnagram.CheckAnagram("mate");
+      Assert.Equal(expected, output);
     }
 
     [Fact]
-    public void CheckAnagram_ForNotAnagramSameFirstLetter_false()
+    public void CheckAnagram_ForNotAnagramSameFirstLetter_notmatch()
     {
       Anagram testAnagram = new Anagram("abc");
-      Assert.Equal(false, testAnagram.CheckAnagram("abd"));
+      List<string> expected = new List<string>{};
+      List<string> output = testAnagram.CheckAnagram("abd");
+      Assert.Equal(expected, output);
     }
 
     [Fact]
-    public void GetAllMatches_ForMultipleWordsInPhrase_true()
+    public void CheckAnagram_ForMultipleWordsInPhrase_match()
     {
       Anagram testAnagram = new Anagram("team");
       List<string> expected = new List<string>{"meat", "mate"};
-      List<string> output = testAnagram.GetAllMatches("meat mate");
+      List<string> output = testAnagram.CheckAnagram("meat mate");
       Assert.Equal(expected, output);
     }
   }
