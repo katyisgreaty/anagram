@@ -3,12 +3,12 @@
 }
 
 <h3>Your word was:</h3>
-<h2>word goes here</h2>
+<h2>@Model.GetWord()</h2>
 
 <h3>These words that you entered are anagrams:</h3>
 <ul>
-  @foreach (string word in idkmodel)
+  @foreach (string word in @Model.CheckAnagram())
   {
-    <li>@idkModel.word</li>
+    <li>@word</li>
   }
 </ul>

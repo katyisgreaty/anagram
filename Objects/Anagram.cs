@@ -7,12 +7,14 @@ namespace AnagramChecker.Objects
   public class Anagram
   {
     private string _word;
+    private string _phrase;
     // private string _checkedWord;
     private List<string> _checkedWordMatches = new List<string>{};
 
-    public Anagram (string word)
+    public Anagram (string word, string phrase)
     {
       _word = word;
+      _phrase = phrase;
     }
 
     public string GetWord()
@@ -24,8 +26,18 @@ namespace AnagramChecker.Objects
       _word = inputWord;
     }
 
-    public List<string> CheckAnagram(string phrase)
+    public string GetPhrase()
     {
+      return _phrase;
+    }
+    public void SetPhrase(string inputPhrase)
+    {
+      _phrase = inputPhrase;
+    }
+
+    public List<string> CheckAnagram()
+    {
+      string phrase = GetPhrase();
       string[] phraseList = phrase.Split(' ');
       string word = GetWord();
       char[] wordArray = word.ToCharArray();

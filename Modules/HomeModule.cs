@@ -11,6 +11,11 @@ namespace AnagramChecker
       Get["/"] = _ => {
         return View["index.cshtml"];
       };
+
+      Post["/results"] = _ => {
+        var newAnagram = new Anagram(Request.Form["initial-word"], Request.Form["phrase"]);
+        return View["results.cshtml", newAnagram];
+      };
     }
   }
 }
