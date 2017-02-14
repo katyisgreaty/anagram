@@ -8,6 +8,7 @@ namespace AnagramChecker.Objects
   {
     private string _word;
     private string _checkedWord;
+    private List<string> _checkedWordMatches = new List<string>{};
 
     public Anagram (string word, string checkedWord)
     {
@@ -33,6 +34,11 @@ namespace AnagramChecker.Objects
       _checkedWord = inputCheckedWord;
     }
 
+    public List<string> GetAllAnagrams()
+    {
+      return _checkedWordMatches;
+    }
+
     public bool CheckAnagram(Anagram anagram)
     {
       string word = anagram.GetWord();
@@ -44,15 +50,26 @@ namespace AnagramChecker.Objects
 
       if (word == checkedWord)
       {
+        _checkedWordMatches.Add(checkedWord);
         return true;
       }
       else
       {
         for (int i = 0; i < wordArray.Length; i++)
         {
-          if (wordArray[i] == checkedWordArray[i])
+          if ( i == wordArray.Length-1 && wordArray[i] == checkedWordArray[i])
           {
+            Console.WriteLine("IF WAS TRUE");
+            _checkedWordMatches.Add(checkedWord);
+            foreach (string thisWord in _checkedWordMatches)
+            {
+              Console.WriteLine(thisWord);
+            }
             return true;
+          }
+          else if (wordArray[i] == checkedWordArray[i])
+          {
+            continue;
           }
           else
           {
