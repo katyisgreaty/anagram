@@ -7,13 +7,12 @@ namespace AnagramChecker.Objects
   public class Anagram
   {
     private string _word;
-    private string _checkedWord;
+    // private string _checkedWord;
     private List<string> _checkedWordMatches = new List<string>{};
 
-    public Anagram (string word, string checkedWord)
+    public Anagram (string word)
     {
       _word = word;
-      _checkedWord = checkedWord;
     }
 
     public string GetWord()
@@ -25,30 +24,30 @@ namespace AnagramChecker.Objects
       _word = inputWord;
     }
 
-    public string GetCheckedWord()
-    {
-      return _checkedWord;
-    }
-    public void SetCheckedWord(string inputCheckedWord)
-    {
-      _checkedWord = inputCheckedWord;
-    }
-
+    // public string GetCheckedWord()
+    // {
+    //   return _checkedWord;
+    // }
+    // public void SetCheckedWord(string inputCheckedWord)
+    // {
+    //   _checkedWord = inputCheckedWord;
+    // }
+    //
     public List<string> GetAllAnagrams()
     {
       return _checkedWordMatches;
     }
 
-    public bool CheckAnagram(Anagram anagram)
+    public bool CheckAnagram(string phrase)
     {
-      string word = anagram.GetWord();
-      string checkedWord = anagram.GetCheckedWord();
+      string word = GetWord();
+      string checkedWord = phrase;
       char[] wordArray = word.ToCharArray();
       char[] checkedWordArray = checkedWord.ToCharArray();
       Array.Sort<char>(wordArray);
       Array.Sort<char>(checkedWordArray);
 
-      if (word == checkedWord)
+      if (word == phrase)
       {
         _checkedWordMatches.Add(checkedWord);
         return true;
@@ -59,12 +58,11 @@ namespace AnagramChecker.Objects
         {
           if ( i == wordArray.Length-1 && wordArray[i] == checkedWordArray[i])
           {
-            Console.WriteLine("IF WAS TRUE");
             _checkedWordMatches.Add(checkedWord);
-            foreach (string thisWord in _checkedWordMatches)
-            {
-              Console.WriteLine(thisWord);
-            }
+            // foreach (string thisWord in _checkedWordMatches)
+            // {
+            //   Console.WriteLine(thisWord);
+            // }
             return true;
           }
           else if (wordArray[i] == checkedWordArray[i])
