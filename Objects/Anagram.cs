@@ -33,16 +33,16 @@ namespace AnagramChecker.Objects
     //   _checkedWord = inputCheckedWord;
     // }
     //
-    public List<string> GetAllMatches()
+    public List<string> GetAllMatches(string phrase)
     {
-      foreach (string thisWord in _checkedWordMatches)
-      {
-        return thisWord;
-      }
+      CheckAnagram(phrase);
+      return _checkedwordMatches;
     }
 
     public bool CheckAnagram(string phrase)
     {
+      string[] phraseList = phrase.Split(' ');
+
       string word = GetWord();
       string checkedWord = phrase;
       char[] wordArray = word.ToCharArray();

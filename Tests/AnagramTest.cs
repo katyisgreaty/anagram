@@ -33,11 +33,11 @@ namespace AnagramChecker.Objects
     }
 
     [Fact]
-    public void CheckAnagram_ForMultipleWordsInPhrase_true()
+    public void GetAllMatches_ForMultipleWordsInPhrase_true()
     {
       Anagram testAnagram = new Anagram("team");
       List<string> expected = new List<string>{"meat", "mate"};
-      List<string> output = testAnagram.CheckAnagram("meat mate");
+      List<string> output = testAnagram.GetAllMatches("meat mate");
       Assert.Equal(expected, output);
     }
   }
