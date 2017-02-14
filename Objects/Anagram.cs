@@ -33,9 +33,12 @@ namespace AnagramChecker.Objects
     //   _checkedWord = inputCheckedWord;
     // }
     //
-    public List<string> GetAllAnagrams()
+    public List<string> GetAllMatches()
     {
-      return _checkedWordMatches;
+      foreach (string thisWord in _checkedWordMatches)
+      {
+        return thisWord;
+      }
     }
 
     public bool CheckAnagram(string phrase)
