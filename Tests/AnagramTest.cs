@@ -17,5 +17,13 @@ namespace AnagramChecker.Objects
       Anagram testAnagram = new Anagram("team", "dolphin");
       Assert.Equal(false, testAnagram.CheckAnagram(testAnagram));
     }
+
+    [Fact]
+    public void CheckAnagram_ForAnagram_true()
+    {
+      Anagram testAnagram = new Anagram("team", "mate");
+      Assert.Equal(true, testAnagram.CheckAnagram(testAnagram));
+    }
+
   }
 }

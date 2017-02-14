@@ -37,6 +37,10 @@ namespace AnagramChecker.Objects
     {
       string word = anagram.GetWord();
       string checkedWord = anagram.GetCheckedWord();
+      char[] wordArray = word.ToCharArray();
+      char[] checkedWordArray = checkedWord.ToCharArray();
+      Array.Sort<char>(wordArray);
+      Array.Sort<char>(checkedWordArray);
 
       if (word == checkedWord)
       {
@@ -44,6 +48,17 @@ namespace AnagramChecker.Objects
       }
       else
       {
+        for (int i = 0; i < wordArray.Length; i++)
+        {
+          if (wordArray[i] == checkedWordArray[i])
+          {
+            return true;
+          }
+          else
+          {
+            return false;
+          }
+        }
         return false;
       }
     }
