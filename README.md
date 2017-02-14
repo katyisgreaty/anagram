@@ -22,13 +22,17 @@ This web application will accept a single word from a user that it can then chec
 * Example Input: bananas
 * Example Output: "bananas"
 
-**The user can input a main word and a word to check against the word, and the application will output the second word if it matches the first.**
+**The user can input a main word and a word to check against the word, and the application will output the second word if it exactly matches the first.**
 * Example Input: Main word: "team" Checker Word: "mate"
 * Example Output: Main word: "team" Checker Word: "mate"
 
 **The user can input a main word and a word to check against the word, and the application will not output the second word if it does not match.**
 * Example Input: Main word: "team" Checker Word: "ring"
 * Example Output: Main word: "team" "None of the given words are anagrams of 'team.'"
+
+**The user can input a main word and a word to check against the word, and the application will output the second word if it is an anagram of the first.**
+* Example Input: Main word: "team" Checker Word: "meat"
+* Example Output: Main word: "team" Checker Word: "meat"
 
 **The user can input a main word and a list of words and the application will output a list of words that are anagrams.**
 * Example Input: Main word: "team" List: "tame, mate, meat"
