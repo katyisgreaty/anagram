@@ -2,7 +2,7 @@
 
 #### _Rearrange the letters in a word_
 
-#### By _**Alexandra Holcombe && Katy Daviscourt**_
+#### By _**Alexandra Holcombe & Katy Daviscourt**_
 
 ## Description
 
